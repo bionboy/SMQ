@@ -1,13 +1,13 @@
-def MCfunc():
+def askQuestion(question):
     while True:
         try:
-            MC = int(input("If it weren’t sex would I act this way? [0-100]: "))
+            val = int(input(question))
         except ValueError:
             print("Please input a integer between 0 and 100.")
             continue
         else:
             break
-    return MC
+    return val
 
 
 def SMQ(): # def SMQ(mode): '','avg','data'
@@ -30,36 +30,22 @@ def SMQ(): # def SMQ(mode): '','avg','data'
         break
     else:
         LAval = 1
-        MC = MCfunc()
+        MC = askQuestion("If it weren’t sex would I act this way? [0-100]: ")
         while MC > 100 or MC < 0 :
-            MC = MCfunc()
-        
-        while True:
-            try:
-                SE = int(input("{Exploitation} Would this be happening if " + \
-                               "they weren’t in such a state of misfortune? [0-100]: "))
-            except ValueError:
-                print("Please input a integer between 0 and 100.")
-                continue
-            else:
-                break
-        while True:
-            try:
-                TP = int(input("{Third Party} (Am I/Are we) affecting anyone who is not involved? [0-100]: "))
-            except ValueError:
-                print("Please input a integer between 0 and 100.")
-                continue
-            else:
-                break
-        while True:
-            try:
-                SC = int(input("{Social Context} (Am I/Are we) reproducing " + \
-                               "or reinforcing broader social injustices? [0-100]: "))
-            except ValueError:
-                print("Please input a integer between 0 and 100.")
-                continue
-            else:
-                break
+            MC = askQuestion("If it weren’t sex would I act this way? [0-100]: ")
+        SE = askQuestion("{Exploitation} Would this be happening if " + \
+                         "they weren’t in such a state of misfortune? [0-100]: ")
+        while SE > 100 or SE < 0 :
+            SE = askQuestion("{Exploitation} Would this be happening if " + \
+                         "they weren’t in such a state of misfortune? [0-100]: ")
+        TP = askQuestion("{Third Party} (Am I/Are we) affecting anyone who is not involved? [0-100]: ")
+        while TP > 100 or TP < 0 :
+            TP = askQuestion("{Third Party} (Am I/Are we) affecting anyone who is not involved? [0-100]: ")
+        SC = askQuestion("{Social Context} (Am I/Are we) reproducing " + \
+                         "or reinforcing broader social injustices? [0-100]: ")
+        while SC > 100 or SC < 0 :
+            SC = askQuestion("{Social Context} (Am I/Are we) reproducing " + \
+                             "or reinforcing broader social injustices? [0-100]: ")
         smq = LAval * (MC + SE + TP + (SC/2))
         # data.write('1\n')
         # data.write(str(MC) + '\n')
